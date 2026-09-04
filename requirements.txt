@@ -1,0 +1,23 @@
+# Core
+torch>=2.0
+numpy>=1.23
+pandas>=1.5
+h5py>=3.7
+tqdm>=4.64
+pyyaml>=6.0
+
+# Metrics / NLP
+# nltk >= 3.9 is required: earlier versions call Fraction(_normalize=...), which
+# was removed in Python 3.12 and breaks corpus_bleu.
+nltk>=3.9
+scikit-learn>=1.2
+
+# ECG signal I/O (MIMIC-IV WFDB) + resampling
+wfdb>=4.1
+scipy>=1.9
+
+# MERL / BERT evaluators
+transformers>=4.30
+
+# Optional: figures
+matplotlib>=3.6

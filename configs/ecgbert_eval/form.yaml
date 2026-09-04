@@ -1,0 +1,30 @@
+# ECG-BERT evaluator config for the "form" diagnostic segment.
+# Change --config to this file to evaluate a different segment; no source edits.
+segment: form
+num_classes: 19
+# Path to the trained BERT labeler checkpoint for this segment (edit to your path):
+checkpoint: checkpoints/ecgbert_form.pth
+# Path to the pretrained BERT (BlueBERT/BioBERT) used by bert_labeler:
+pretrain_path: checkpoints/bert_pretrained
+# Column in the input CSVs holding report text:
+report_column: Report Impression
+conditions:
+  - "atrial premature complex"
+  - "digitalis-effect"
+  - "high QRS voltage"
+  - "non-specific ST depression"
+  - "prolonged PR interval"
+  - "Q waves present"
+  - "voltage criteria (QRS) for left ventricular hypertrophy"
+  - "non-diagnostic T abnormalities"
+  - "TAB"
+  - "low amplitude T-waves"
+  - "abnormal QRS"
+  - "long QT-interval"
+  - "premature complex(es)"
+  - "non-specific T-wave changes"
+  - "non-specific ST elevation"
+  - "non-specific ST changes"
+  - "ventricular premature complex"
+  - "inverted T-waves"
+  - "low QRS voltages in the frontal and horizontal leads"

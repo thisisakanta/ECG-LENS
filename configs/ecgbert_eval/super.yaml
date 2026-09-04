@@ -1,0 +1,16 @@
+# ECG-BERT evaluator config for the "super" diagnostic segment.
+# Change --config to this file to evaluate a different segment; no source edits.
+segment: super
+num_classes: 5
+# Path to the trained BERT labeler checkpoint for this segment (edit to your path):
+checkpoint: checkpoints/ecgbert_super.pth
+# Path to the pretrained BERT (BlueBERT/BioBERT) used by bert_labeler:
+pretrain_path: checkpoints/bert_pretrained
+# Column in the input CSVs holding report text:
+report_column: Report Impression
+conditions:
+  - "Hypertrophy"
+  - "Normal ECG"
+  - "Myocardial Infarction"
+  - "Conduction Disturbances"
+  - "ST-T Changes"

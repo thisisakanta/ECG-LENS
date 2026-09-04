@@ -1,0 +1,31 @@
+# MIMIC-IV-ECG cross-domain evaluation (lexical metrics only, no training).
+# Reference values for the 3-step cross-domain workflow in the top-level README
+# (prepare_mimic.py -> generate_reports.py -> run_lexical.py). Those scripts take
+# their settings from the command line; this file records the values to pass.
+
+prepare:
+  reports_csv: /path/to/mimic_reports.csv     # columns: record_path, report
+  records_root: /path/to/mimic-iv-ecg/files   # prepended to record_path (optional)
+  record_col: record_path
+  report_col: report
+  encoder: encoder.pkl                         # SAME tokenizer used in training
+  out_dir: mimic_prepared                      # will contain TEST_DATASET.hdf5
+  sampling_rate: 500                           # CONFIRM = training rate
+  length: 5000                                 # CONFIRM = training length (12 x 5000)
+  max_len: 64                                  # CONFIRM = training caption max_len
+
+generate:
+  checkpoint: checkpoints/ecglens_ptbxl.pth
+  dataset_folder: mimic_prepared               # dir with TEST_DATASET.hdf5
+  encoder: encoder.pkl
+  output_dir: mimic_out
+  # Only if the checkpoint uses prompt conditioning (it does): MERL prompts per record.
+  label_prompts: mimic_out/merl_prompts.pkl    # List[str], produce via merl_predictor.py
+  batch_size: 32
+  top_k: 1                                      # greedy (matches training)
+
+evaluate:
+  hyp: mimic_out/transformer_tokenized_hypotheses.pkl
+  ref: mimic_out/transformer_tokenized_references.pkl
+  tag: MIMIC-IV
+  out: mimic_out/lexical_metrics.csv

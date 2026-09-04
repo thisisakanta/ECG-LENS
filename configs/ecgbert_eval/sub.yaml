@@ -1,0 +1,34 @@
+# ECG-BERT evaluator config for the "sub" diagnostic segment.
+# Change --config to this file to evaluate a different segment; no source edits.
+segment: sub
+num_classes: 23
+# Path to the trained BERT labeler checkpoint for this segment (edit to your path):
+checkpoint: checkpoints/ecgbert_sub.pth
+# Path to the pretrained BERT (BlueBERT/BioBERT) used by bert_labeler:
+pretrain_path: checkpoints/bert_pretrained
+# Column in the input CSVs holding report text:
+report_column: Report Impression
+conditions:
+  - "anterior myocardial infarction"
+  - "left anterior/posterior fascicular block"
+  - "left ventricular hypertrophy"
+  - "ST-T changes"
+  - "inferior myocardial infarction"
+  - "septal hypertrophy"
+  - "complete right bundle branch block"
+  - "Wolf-Parkinson-White syndrome"
+  - "left atrial overload/enlargement"
+  - "normal ECG"
+  - "ischemic"
+  - "AV block"
+  - "right atrial overload/enlargement"
+  - "lateral myocardial infarction"
+  - "ischemic in inferior leads"
+  - "ischemic in anterolateral leads"
+  - "non-specific ST changes"
+  - "complete left bundle branch block"
+  - "incomplete left bundle branch block"
+  - "incomplete right bundle branch block"
+  - "posterior myocardial infarction"
+  - "right ventricular hypertrophy"
+  - "non-specific intraventricular conduction disturbance (block)"

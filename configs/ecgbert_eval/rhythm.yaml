@@ -1,0 +1,23 @@
+# ECG-BERT evaluator config for the "rhythm" diagnostic segment.
+# Change --config to this file to evaluate a different segment; no source edits.
+segment: rhythm
+num_classes: 12
+# Path to the trained BERT labeler checkpoint for this segment (edit to your path):
+checkpoint: checkpoints/ecgbert_rhythm.pth
+# Path to the pretrained BERT (BlueBERT/BioBERT) used by bert_labeler:
+pretrain_path: checkpoints/bert_pretrained
+# Column in the input CSVs holding report text:
+report_column: Report Impression
+conditions:
+  - "supraventricular arrhythmia"
+  - "bigeminal pattern (unknown origin, SV or Ventricular)"
+  - "sinus tachycardia"
+  - "sinus arrhythmia"
+  - "sinus bradycardia"
+  - "trigeminal pattern (unknown origin, SV or Ventricular)"
+  - "atrial fibrillation"
+  - "sinus rhythm"
+  - "supraventricular tachycardia"
+  - "paroxysmal supraventricular tachycardia"
+  - "atrial flutter"
+  - "normal functioning artificial pacemaker"
