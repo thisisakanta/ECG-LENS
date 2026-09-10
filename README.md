@@ -1,5 +1,8 @@
 # ECG-LENS: Lead-Aware Clinical Context Enriched ECG Report Generation and Evaluation
 
+ECG-LENS is an end-to-end ECG report generation framework that integrates lead-specific and global ECG representations with structured diagnostic context to generate clinically faithful reports. It combines lead-wise encoders that preserve localized waveform morphology with a global encoder that captures inter-lead dependencies, and fuses these signal representations with clinically enriched textual prompts that condition a GPT-2 decoder. We further introduce an ECG-specific report preprocessing strategy that removes repetitive and non-informative text, focusing the model on clinically meaningful findings. Finally, lexical metrics may not reflect clinical fidelity, as equivalent reports can differ in wording. We therefore devise F1-ECGBERT, a BERT-based evaluation procedure that measures diagnostic-label agreement between generated and reference reports. Experiments on PTB-XL and cross-domain evaluation on MIMIC-IV-ECG show that ECG-LENS consistently outperforms state-of-the-art methods, with absolute gains of 9.9%, 8.5%, and 10.9% in METEOR, ROUGE-L, and F1-ECGBERT over the strongest baselines.
+
+
 Reference implementation of ECG-LENS, an end-to-end framework that turns a raw
 12-lead ECG into a clinical report, together with **F1-ECGBERT**, an ECG-specific
 metric that scores the diagnostic content of a generated report rather than its
