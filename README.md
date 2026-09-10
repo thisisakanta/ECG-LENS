@@ -3,19 +3,6 @@
 ECG-LENS is an end-to-end ECG report generation framework that integrates lead-specific and global ECG representations with structured diagnostic context to generate clinically faithful reports. It combines lead-wise encoders that preserve localized waveform morphology with a global encoder that captures inter-lead dependencies, and fuses these signal representations with clinically enriched textual prompts that condition a GPT-2 decoder. We further introduce an ECG-specific report preprocessing strategy that removes repetitive and non-informative text, focusing the model on clinically meaningful findings. Finally, lexical metrics may not reflect clinical fidelity, as equivalent reports can differ in wording. We therefore devise F1-ECGBERT, a BERT-based evaluation procedure that measures diagnostic-label agreement between generated and reference reports. Experiments on PTB-XL and cross-domain evaluation on MIMIC-IV-ECG show that ECG-LENS consistently outperforms state-of-the-art methods, with absolute gains of 9.9%, 8.5%, and 10.9% in METEOR, ROUGE-L, and F1-ECGBERT over the strongest baselines.
 
 
-Reference implementation of ECG-LENS, an end-to-end framework that turns a raw
-12-lead ECG into a clinical report, together with **F1-ECGBERT**, an ECG-specific
-metric that scores the diagnostic content of a generated report rather than its
-wording.
-
-ECG-LENS keeps lead identity intact instead of collapsing the recording into a
-single vector: twelve **lead-specific 1-D ResNet-18 encoders** preserve localized
-waveform morphology while a **global 1-D ResNet-18 encoder** reads all twelve
-channels jointly to capture inter-lead relationships. A **frozen pretrained ECG
-classifier** supplies zero-shot diagnostic labels, which are rendered into a
-short **clinical prompt** that gives the decoder an explicit diagnostic plan. A
-**GPT-2-style decoder trained from scratch** over a domain vocabulary then
-generates the report, conditioned on both the ECG tokens and the prompt.
 
 ## Repository layout
 
